@@ -1,0 +1,74 @@
+﻿<Window x:Class="CouchbaseWpfApplication.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CouchbaseWpfApplication" ResizeMode="NoResize" FontSize="15"
+        mc:Ignorable="d" Title="Couchbase POC Demo" Height="720" Width="883" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="250"/>
+            <RowDefinition />
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="90"/>
+        </Grid.RowDefinitions>
+
+        <GroupBox Margin="5"  Header="Add New Document: " Grid.Column="0">
+            <TextBox Margin="10"  x:Name="txtNewItem"/>
+        </GroupBox>
+
+        <GroupBox Margin="5"  Header="Operations:" Grid.Column="1">
+            <StackPanel Orientation="Horizontal">
+                <Button Margin="5"  Content="Add" Click="Add_Click" Width="71"/>
+                <Button Margin="5" Content="Delete Document" Click="DeleteButton_Click" Width="135"/>
+                <Button Margin="5" Content="Delete Attachment if any" Click="DeleteAttachemtButton_Click" Width="179"/>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Margin="5"  Header="All Documents:" Grid.Column="0" Grid.Row="1">
+            <ListBox x:Name="itemList" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" SelectionChanged="listbox_SelectionChanged" Margin="10"/>
+        </GroupBox>
+
+        <GroupBox Margin="5"  Header="Document Information:" Grid.Column="1" Grid.Row="1">
+            <TextBox x:Name="docInfo" IsReadOnly="True" Margin="10" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="Gray" BorderThickness="1" TextWrapping="Wrap" AcceptsReturn="True"/>
+        </GroupBox>
+
+        <GroupBox Margin="5"  Header="Document Id's:" Grid.Column="0" Grid.Row="2">
+            <ListBox Margin="10" x:Name="docIdList" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" SelectionChanged="docIdList_SelectionChanged"/>
+        </GroupBox>
+
+        <GroupBox Margin="5"  Header="Attach Data:" Grid.Row="2" Grid.Column="1">
+            <StackPanel Orientation="Horizontal" Margin="10" >
+                <TextBox x:Name="txtAttach" Width="290" Margin="0,9,0,7" Text="This is some text in an attachment" TextWrapping="Wrap" AcceptsReturn="True"/>
+                <Button Margin="5,7,5,5" Content="Attach Data" Click="AttachButton_Click" Width="95"/>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Margin="5"  Header="Errors:" Grid.Column="0" Grid.Row="3">
+            <ListBox Margin="10" x:Name="errorBox"/>
+        </GroupBox>
+
+        <GroupBox Margin="5"  Header="Update Document:" Grid.Row="3" Grid.Column="1">
+            <StackPanel Orientation="Horizontal" Margin="10,0">
+                <TextBox x:Name="txtUpdate" Width="290" Margin="0,14,0,7"/>
+                <Button Margin="5,14,5,5" Content="Update" Click="UpdateButton_Click" Width="91"/>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Margin="5"  Header="Couchbase Sync Gateway Address:" Grid.Row="4" Grid.ColumnSpan="2">
+            <StackPanel Grid.Row="4" Orientation="Horizontal">
+                <Label Margin="10" Content="IP:" />
+                <TextBox x:Name="txtIP" Width="208" FontSize="20" Margin="10" Text="10.77.11.116"/>
+                <Label Margin="10" Content="Port:"/>
+                <TextBox x:Name="txtPort" Width="69" Margin="10" Text="4984"/>
+                <Button Margin="10,8,10,6" Content="Connect to Couchbase Syn Gateway" Click="ConnectBT_Click" x:Name="ConnectBT" Width="295"/>
+                <Button Margin="10,8,10,6" Content="Exit" Click="Button_Click" Width="70"/>
+            </StackPanel>
+        </GroupBox>
+    </Grid>
+</Window>
