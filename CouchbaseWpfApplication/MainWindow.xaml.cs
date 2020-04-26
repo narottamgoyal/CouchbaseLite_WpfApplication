@@ -250,6 +250,7 @@ namespace CouchbaseWpfApplication
         private void docIdList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var x = sender as ListBox;
+            if(x.SelectedItem != null)
             ShowDocumentInformation(x.SelectedItem as string);
         }
 

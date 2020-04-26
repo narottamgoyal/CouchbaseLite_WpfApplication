@@ -1,2 +1,1 @@
-# CouchbaseLite_WpfApplication
-Couchbase Lite Wpf Application
+# Couchbase Lite Wpf Application
